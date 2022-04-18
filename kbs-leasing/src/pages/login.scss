@@ -1,0 +1,30 @@
+$primary: #0dcaf0;
+$danger: #ff4136;
+$info: #2CB89B;
+
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.Login-component {
+    /* The image used */
+    background-image: url(../assets/images/login-bg.jpeg);
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    height: 100vh;
+    position: relative;
+
+}
+
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;  
+}
