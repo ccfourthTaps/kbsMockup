@@ -1,0 +1,39 @@
+// If you want to override variables do it here
+// DatePicker
+thead[class*="ant-table-thead"] th{
+    background-color: #7B9EE1!important;
+  }
+.red{
+    color: red;
+}
+ 
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    display: block;
+    height: auto;
+    width: 100%;
+    border-radius: 0.25rem;
+    border: 0.75px solid;
+    border-color: #b1b7c1;
+    transition: border-color 0.15;
+}
+
+
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import CoreUI for React components library
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+@import "layout";
+@import "example";
+
+// If you want to add custom CSS you can put it here.
+@import "custom";
