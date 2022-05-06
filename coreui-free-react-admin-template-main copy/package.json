@@ -26,6 +26,7 @@
     "coreui_library_short_version": "4.1"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@coreui/chartjs": "^3.0.0",
     "@coreui/coreui": "^4.1.2",
     "@coreui/coreui-pro": "^4.2.0-beta.2",
@@ -58,6 +59,7 @@
     "auto-changelog": "~2.4.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "2.6.2",
     "react-scripts": "5.0.0",
     "sass": "^1.49.9",

@@ -12,6 +12,7 @@ const Kbsdashboard = React.lazy(() => import('./views/dashboard/Kbsdashboard'))
 // KBSForms
 const Tabforms = React.lazy(() => import('./views/kbsforms/Tabforms'))
 const Stepforms = React.lazy(() => import('./views/kbsforms/Stepforms'))
+const Edititemform = React.lazy(() => import('./views/pages/tableform/edititemform'))
 // KBSregister
 const Kbsregister = React.lazy(() => import('./views/kbsregister/kbsregister'))
 // Base
@@ -71,6 +72,8 @@ const routes = [
   // KBSTap
   { path: '/kbsforms/tabforms', name: 'Tapforms', element: Tabforms },
   { path: '/kbsforms/stepforms', name: 'Stepforms', element: Stepforms },
+  { path: '/edititemform', name: 'Editforms', element: Edititemform },
+  
   // KBSRegister
   { path: '/kbsregister', name: 'KBS Register', element: Kbsregister },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },

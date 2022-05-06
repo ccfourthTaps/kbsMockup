@@ -1,13 +1,13 @@
 // Variables
 //
 // If you want to customize your project please uncomment and update one of the following variables.
-$primary: #7B9EE1;
+$primary: #80d3ff;
 $navbar-sidebar-link-color: #ffffff;
 
 
 // navbar
-$navbar-brand-bg: darken($primary, 10%) !default;
-$navbar-bg: darken($primary, 10%) !default;
+$navbar-brand-bg: darken($primary, 2%) !default;
+$navbar-bg: darken($primary, 2%) !default;
 $navbar-color: $navbar-sidebar-link-color !default;
 $navbar-active-color: $navbar-sidebar-link-color !default;
 $navbar-hover-color: $navbar-sidebar-link-color !default;

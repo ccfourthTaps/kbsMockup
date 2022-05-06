@@ -6,13 +6,12 @@ import CIcon from '@coreui/icons-react'
 
 import { AppSidebarNav } from './AppSidebarNav'
 
-import { logoNegative } from 'src/assets/brand/logo-negative'
-import { sygnet } from 'src/assets/brand/sygnet'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 
 import KbsLogo from './../assets/images/kbs-logo.png'
+import Kbssvg from './../assets/images/kbs-logo.svg'
 // sidebar nav config
 import navigation from '../_nav'
 
@@ -33,7 +32,10 @@ const AppSidebar = () => {
       <CSidebarBrand className="d-none d-md-flex" to="/">
         {/* <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} />
         <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} /> */}
-        <img src={KbsLogo} alt="logo" />
+        
+      <img src={KbsLogo} alt='logo' style={{margin:30}} />
+
+
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
