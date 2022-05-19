@@ -1,8 +1,57 @@
 // If you want to override variables do it here
 // DatePicker
 thead[class*="ant-table-thead"] th{
-    background-color: #80d3ff!important;
+    background-color: #CEE4FE!important;
+    align-content: center;
   }
+// tr:first-child > th:last-child{border-top-right-radius:20px;}
+
+
+// .ant-table {
+//   display: block;
+
+//   @media screen and (max-width: 600px) {
+//     // &-thead {
+//     //   display: inline-block;
+//     // }
+
+//     &-thead>tr,
+//     &-tbody>tr {
+
+//       th,
+//       td {
+//         &:first-of-type {
+//           padding-top: 1rem;
+//         }
+
+//         &:last-of-type {
+//           padding-bottom: 1rem;
+//         }
+//       }
+
+//       >th,
+//       >td {
+//         display: block;
+//         width: auto !important;
+//         border: none;
+//         padding: 0 1rem;
+//         font-size: 1.1rem;
+
+//         &:last-child {
+//           border-bottom: 1px solid #eee;
+//         }
+//       }
+//     }
+//   }
+// }
+.customDatePickerWidth, 
+.customDatePickerWidth > div.react-datepicker-wrapper, 
+.customDatePickerWidth > div > div.react-datepicker__input-container
+.customDatePickerWidth > div > div.react-datepicker__input-container input {
+   width: 100%;
+}
+
+
 .red{
     color: red;
 }

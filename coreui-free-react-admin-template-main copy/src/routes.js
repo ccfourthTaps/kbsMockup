@@ -7,6 +7,8 @@ const Typography = React.lazy(() => import('./views/theme/typography/Typography'
 // KBSlanding
 const Kbslanding = React.lazy(() => import('./views/kbslanding/Kbslanding'))
 const Kbsantdtable = React.lazy(() => import('./views/kbslanding/Kbsantdtable'))
+const Kbsantdthemetwo = React.lazy(() => import('./views/kbslanding/Kbsantdthemetwo'))
+const Kbsantdthemethree = React.lazy(() => import('./views/kbslanding/Kbsantdthemethree'))
 // KBSdashboard
 const Kbsdashboard = React.lazy(() => import('./views/dashboard/Kbsdashboard'))
 // KBSForms
@@ -15,6 +17,8 @@ const Stepforms = React.lazy(() => import('./views/kbsforms/Stepforms'))
 const Edititemform = React.lazy(() => import('./views/pages/tableform/edititemform'))
 // KBSregister
 const Kbsregister = React.lazy(() => import('./views/kbsregister/kbsregister'))
+// Button page
+const Buttonpage = React.lazy(()=>import('./views/base/buttonpage/Buttonpage'))
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
 const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'))
@@ -67,13 +71,16 @@ const routes = [
   // KBSLanding
   { path: '/kbslanding', name: 'KBSlanding', element: Kbslanding },
   { path: '/kbsantd', name: 'KBSantd', element: Kbsantdtable },
+  { path: '/kbsantdtwo', name: 'KBSantdtwo', element: Kbsantdthemetwo },
+  { path: '/kbsantdthree', name: 'KBSantdthree', element: Kbsantdthemethree },
   // KBSDashboard
   { path: '/kbsdashboard', name: 'KBSboard', element: Kbsdashboard },
   // KBSTap
   { path: '/kbsforms/tabforms', name: 'Tapforms', element: Tabforms },
   { path: '/kbsforms/stepforms', name: 'Stepforms', element: Stepforms },
   { path: '/edititemform', name: 'Editforms', element: Edititemform },
-  
+  // Buttonpage
+  { path: '/buttonpage', name: 'Buttonpage', element: Buttonpage },
   // KBSRegister
   { path: '/kbsregister', name: 'KBS Register', element: Kbsregister },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },

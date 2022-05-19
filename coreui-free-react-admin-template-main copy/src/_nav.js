@@ -35,6 +35,16 @@ const _nav = [
     name: 'KBS-AntD',
     to: '/kbsantd',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },{
+    component: CNavItem,
+    name: 'KBS-AntDtwo',
+    to: '/kbsantdtwo',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },{
+    component: CNavItem,
+    name: 'KBS-AntDthree',
+    to: '/kbsantdthree',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
@@ -60,6 +70,12 @@ const _nav = [
         to: '/kbsforms/stepforms',
       },
     ],
+  },
+  {
+    component: CNavItem,
+    name: 'Buttonpage',
+    to: '/buttonpage',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
   // Register
   {

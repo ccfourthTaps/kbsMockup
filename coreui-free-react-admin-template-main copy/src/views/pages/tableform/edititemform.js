@@ -121,7 +121,7 @@ const Edititemform = (props) => {
               </CCol>
               <CCol xs={2}>
               <CButton color='danger' onClick={()=> onCancel()}>ยกเลิก</CButton>
-              </CCol>
+                </CCol>
               <CCol xs={4} ></CCol>
             </CRow>
           </CContainer>

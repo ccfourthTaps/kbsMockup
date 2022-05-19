@@ -1,19 +1,33 @@
 import React, { useState } from 'react'
-import { Table, Space, Select } from 'antd'
+import { Table, Space, Input, Select, DatePicker,AutoComplete } from 'antd'
 import { CCard, CRow, CCol, CButton, CLink } from '@coreui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import Tablemain from 'src/components/Table/Tablemain'
 import 'antd/dist/antd.css'
-import { DeleteOutlined, EditOutlined, SearchOutlined, PlusOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined, SearchOutlined,PlusOutlined} from '@ant-design/icons'
 import { Button as ButtonUI, css } from '@nextui-org/react'
+import { Delete } from 'react-iconly'
 
-const Kbsantdtable = () => {
+
+const Kbsantdthemethree = () => {
   let history = useNavigate()
   const { Option } = Select
 
   const handleChange = (value) => {
     console.log(`selected ${value}`)
   }
+  const [autoOption,setAutooption] = useState([
+    {label: 'มาโนช', value: 'มาโนช'}, 
+    {label: 'ไก่แก้ว', value: 'ไก่แก้ว'},
+    {label: 'เกรียงไกร', value: 'เกรียงไกร'}, 
+    {label: 'มิเชล', value: 'มิเชล'},
+    {label: 'ศรัญ', value: 'ศรัญ'}
+  ]);
+  const [autoApprover,setAutoapprover] = useState([
+    {label: 'เจณภพ', value: 'เจณภพ'}, 
+    {label: 'มาแต', value: 'มาแต'},
+    {label: 'กาย', value: 'กาย'}, 
+  ])
   const [selectOption, setSelectoption] = useState([
     {
       itemid: 1,
@@ -113,7 +127,7 @@ const Kbsantdtable = () => {
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.idno - b.idno,
+      sorter:(a,b) => a.idno - b.idno,
     },
     {
       title: 'ประเภทสัญญา',
@@ -121,11 +135,13 @@ const Kbsantdtable = () => {
       key: 'category',
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
-      filters: selectOption.map((item) => ({
-        text: item.itemName,
-        value: item.itemName,
-      })),
-      onFilter: (value, record) => record.category.indexOf(value) === 0,
+      filters:
+        selectOption.map((item)=> ({
+          text:item.itemName,
+          value:item.itemName
+        }))
+      ,
+      onFilter:(value,record) => record.category.indexOf(value) === 0,
     },
     {
       title: 'ชื่อผู้ทำสัญญา',
@@ -133,11 +149,12 @@ const Kbsantdtable = () => {
       key: 'customerFname',
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
-      filters: data.map((item) => ({
-        text: item.customerFname,
-        value: item.customerFname,
-      })),
-      onFilter: (value, record) => record.customerFname.indexOf(value) === 0,
+      filters:
+        data.map((item) => ({
+          text:item.customerFname,
+          value:item.customerFname
+        })),
+        onFilter:(value,record) => record.customerFname.indexOf(value) === 0,
     },
     {
       title: 'วันที่',
@@ -146,7 +163,7 @@ const Kbsantdtable = () => {
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => new Date(a.date) - new Date(b.date),
+      sorter:(a,b) => new Date(a.date) - new Date(b.date),
     },
     {
       title: 'ผู้อนุมัติ',
@@ -154,11 +171,14 @@ const Kbsantdtable = () => {
       key: 'approver',
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
-      filters: selectApprover.map((item) => ({
-        text: item.itemName,
-        value: item.itemName,
-      })),
-      onFilter: (value, record) => record.approver.indexOf(value) === 0,
+      filters:
+        selectApprover.map((item)=> ({
+          text:item.itemName,
+          value:item.itemName
+        }))
+      ,
+      onFilter:(value,record) => record.approver.indexOf(value) === 0,
+    
     },
     {
       title: 'จำนวนเงิน',
@@ -167,7 +187,7 @@ const Kbsantdtable = () => {
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.amount - b.amount,
+      sorter:(a,b) => a.amount - b.amount,
       render: (text, record) => {
         return record.amount.toLocaleString('en') + ' บาท'
       },
@@ -183,13 +203,16 @@ const Kbsantdtable = () => {
             size={'sm'}
             css={{ height: '$12' }}
             color="warning"
-            
+            rounded
+            ghost
+            shadow
+            icon={<EditOutlined />}
             onClick={() => editOnclick(record)}
           >
-            แก้ไข
+            {/* แก้ไข */}
           </ButtonUI>
-          <ButtonUI size={'sm'} color="error" >
-            ลบ
+          <ButtonUI size={'sm'} color="error" ghost shadow rounded icon={<DeleteOutlined />}>
+            {/* ลบ */}
           </ButtonUI>
         </Space>
       ),
@@ -207,17 +230,106 @@ const Kbsantdtable = () => {
         <CRow className="mt-3 text-center">
           <h4>รายการสัญญา</h4>
         </CRow>
-        <CRow className="p-4">
+        <CRow
+          xs={{ cols: 1, gutter: 2 }}
+          md={{ cols: 2, gutter: 2 }}
+          lg={{ cols: 4, gutter: 2 }}
+          className="px-4 pt-2"
+        >
+          <CCol>
+          <AutoComplete 
+        options={autoOption}
+        filterOption={true}
+        style={{width:'266px'}}
+        placeholder="ชื่อ"
+        >
+            </AutoComplete>
+          </CCol>
+          <CCol>
+            <DatePicker className="customDatePickerWidth" />
+          </CCol>
+          <CCol>
+            <DatePicker className="customDatePickerWidth" />
+          </CCol>
+          <CCol>
+          <AutoComplete 
+        options={autoApprover}
+        filterOption={true}
+        style={{width:'266px'}}
+        placeholder="ผู้อนุมัติ"
+        >
+            </AutoComplete>
+          </CCol>
+        </CRow>
+        <CRow
+          xs={{ cols: 1, gutter: 2 }}
+          md={{ cols: 2, gutter: 2 }}
+          lg={{ cols: 4, gutter: 2 }}
+          className="px-4"
+        >
+          <CCol>
+            {/* <Dropdown overlay={menu} trigger={['click']}>
+            <Button>
+              <Space>
+                ประเภทสัญญา
+                <DownOutlined />
+              </Space>
+            </Button>
+          </Dropdown> */}
+            <Select
+              defaultValue="สัญญาก่อนเบิกใช้"
+              onChange={handleChange}
+              style={{ width: '100%' }}
+            >
+              {/* <Option value="jack">สัญญาก่อนเบิกใช้</Option>
+            <Option value="lucy">สัญญาผู้รับเหมา</Option>
+            <Option value="Yiminghe">สัญญาพ่อค้าอ้อย</Option>
+            {} */}
+              {selectOption.map((item) => (
+                <Option key={item.itemid} value={item.itemid}>
+                  {item.itemName}
+                </Option>
+              ))}
+            </Select>
+          </CCol>
+          <CCol>
+            <Input placeholder="จำนวนเงิน" />
+          </CCol>
+          <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <ButtonUI size={'sm'} color="default" shadow rounded icon={<SearchOutlined />}>
+              {/* ค้นหา */}
+            </ButtonUI>
+          </CCol>
+          <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <ButtonUI size={'sm'} color="success" shadow rounded icon={<PlusOutlined />}>
+              {/* สร้าง */}
+            </ButtonUI>
+          </CCol>
+        </CRow>
+        <CRow className='p-4'>
+          <Table
+            columns={tablecolumn}
+            dataSource={data}
+            pagination={{
+              defaultPageSize: 10,
+              showSizeChanger: true,
+              pageSizeOptions: ['10', '20', '30'],
+            }}
+            bordered={true}
+            //   scroll={{ x: 400 }}
+          />
+        </CRow>
+        {/* <CRow className="p-4"> */}
           {/* <CCol className="p-4"> */}
           {/* <Table dataSource={data} columns={tablecolumn} bordered  
             rowClassName={"red"}
             /> */}
-          <Tablemain columns={tablecolumn} dataSource={data} bordered={true} />
+          {/* <Tablemain columns={tablecolumn} dataSource={data} bordered={true} /> */}
           {/* </CCol> */}
-        </CRow>
+        {/* </CRow> */}
       </CCard>
     </div>
   )
 }
 
-export default Kbsantdtable
+export default Kbsantdthemethree
