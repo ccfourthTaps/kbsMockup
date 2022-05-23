@@ -94,12 +94,12 @@ const Tablemain = (props) => {
   return (
     <>
       <CRow
-        xs={{ cols: 1, gutter: 2 }}
-        md={{ cols: 2, gutter: 2 }}
-        lg={{ cols: 4, gutter: 2 }}
-        className="px-2 pt-2"
+        xs={{ cols: 1, gutterX: 2 }}
+        md={{ cols: 2, gutterX: 2 }}
+        lg={{ cols: 4, gutterX: 2 }}
+        
       >
-        <CCol>
+        <CCol className='p-2'>
           {/* <Input placeholder="ชื่อ" /> */}
           <AutoComplete
             options={autoOption}
@@ -108,13 +108,13 @@ const Tablemain = (props) => {
             placeholder="ชื่อ"
           ></AutoComplete>
         </CCol>
-        <CCol>
+        <CCol className='p-2'>
           <DatePicker className="customDatePickerWidth" />
         </CCol>
-        <CCol>
+        <CCol className='p-2'>
           <DatePicker className="customDatePickerWidth" />
         </CCol>
-        <CCol>
+        <CCol className='p-2'>
           <AutoComplete
             options={autoApprover}
             filterOption={true}
@@ -127,9 +127,9 @@ const Tablemain = (props) => {
         xs={{ cols: 1, gutter: 2 }}
         md={{ cols: 2, gutter: 2 }}
         lg={{ cols: 4, gutter: 2 }}
-        className="px-2 pb-4"
+        // className="px-2 p-2"
       >
-        <CCol>
+        <CCol className='p-2'>
           {/* <Dropdown overlay={menu} trigger={['click']}>
             <Button>
               <Space>
@@ -150,15 +150,15 @@ const Tablemain = (props) => {
             ))}
           </Select>
         </CCol>
-        <CCol>
+        <CCol className='p-2'>
           <Input placeholder="จำนวนเงิน" />
         </CCol>
-        <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <CCol style={{ display: 'flex', justifyContent: 'center',alignItems:'center'  }}>
           <ButtonUI size={'sm'} color="default" flat>
             ค้นหา
           </ButtonUI>
         </CCol>
-        <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <CCol style={{ display: 'flex', justifyContent: 'center',alignItems:'center'  }}>
           <ButtonUI size={'sm'} color="success" flat>
             สร้าง
           </ButtonUI>

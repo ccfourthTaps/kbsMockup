@@ -1,28 +1,27 @@
 import React, { useState } from 'react'
 import { Table, Space, Input, Select, DatePicker, AutoComplete } from 'antd'
-import { CCard, CRow, CCol, CButton, CLink } from '@coreui/react'
+import { CCard, CRow, CCol, CButton, CLink, CContainer } from '@coreui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import Tablemain from 'src/components/Table/Tablemain'
 import 'antd/dist/antd.css'
-import { DeleteOutlined, EditOutlined, SearchOutlined,PlusOutlined} from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined, SearchOutlined, PlusOutlined } from '@ant-design/icons'
 import { Button as ButtonUI, css } from '@nextui-org/react'
 import { Delete } from 'react-iconly'
-
 
 const Kbsantdthemetwo = () => {
   let history = useNavigate()
   const { Option } = Select
-  const [autoOption,setAutooption] = useState([
-    {label: 'มาโนช', value: 'มาโนช'}, 
-    {label: 'ไก่แก้ว', value: 'ไก่แก้ว'},
-    {label: 'เกรียงไกร', value: 'เกรียงไกร'}, 
-    {label: 'มิเชล', value: 'มิเชล'},
-    {label: 'ศรัญ', value: 'ศรัญ'}
-  ]);
-  const [autoApprover,setAutoapprover] = useState([
-    {label: 'เจณภพ', value: 'เจณภพ'}, 
-    {label: 'มาแต', value: 'มาแต'},
-    {label: 'กาย', value: 'กาย'}, 
+  const [autoOption, setAutooption] = useState([
+    { label: 'มาโนช', value: 'มาโนช' },
+    { label: 'ไก่แก้ว', value: 'ไก่แก้ว' },
+    { label: 'เกรียงไกร', value: 'เกรียงไกร' },
+    { label: 'มิเชล', value: 'มิเชล' },
+    { label: 'ศรัญ', value: 'ศรัญ' },
+  ])
+  const [autoApprover, setAutoapprover] = useState([
+    { label: 'เจณภพ', value: 'เจณภพ' },
+    { label: 'มาแต', value: 'มาแต' },
+    { label: 'กาย', value: 'กาย' },
   ])
   const handleChange = (value) => {
     console.log(`selected ${value}`)
@@ -126,7 +125,7 @@ const Kbsantdthemetwo = () => {
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
       defaultSortOrder: 'descend',
-      sorter:(a,b) => a.idno - b.idno,
+      sorter: (a, b) => a.idno - b.idno,
     },
     {
       title: 'ประเภทสัญญา',
@@ -134,13 +133,11 @@ const Kbsantdthemetwo = () => {
       key: 'category',
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
-      filters:
-        selectOption.map((item)=> ({
-          text:item.itemName,
-          value:item.itemName
-        }))
-      ,
-      onFilter:(value,record) => record.category.indexOf(value) === 0,
+      filters: selectOption.map((item) => ({
+        text: item.itemName,
+        value: item.itemName,
+      })),
+      onFilter: (value, record) => record.category.indexOf(value) === 0,
     },
     {
       title: 'ชื่อผู้ทำสัญญา',
@@ -148,12 +145,11 @@ const Kbsantdthemetwo = () => {
       key: 'customerFname',
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
-      filters:
-        data.map((item) => ({
-          text:item.customerFname,
-          value:item.customerFname
-        })),
-        onFilter:(value,record) => record.customerFname.indexOf(value) === 0,
+      filters: data.map((item) => ({
+        text: item.customerFname,
+        value: item.customerFname,
+      })),
+      onFilter: (value, record) => record.customerFname.indexOf(value) === 0,
     },
     {
       title: 'วันที่',
@@ -162,7 +158,7 @@ const Kbsantdthemetwo = () => {
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
       defaultSortOrder: 'descend',
-      sorter:(a,b) => new Date(a.date) - new Date(b.date),
+      sorter: (a, b) => new Date(a.date) - new Date(b.date),
     },
     {
       title: 'ผู้อนุมัติ',
@@ -170,14 +166,11 @@ const Kbsantdthemetwo = () => {
       key: 'approver',
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
-      filters:
-        selectApprover.map((item)=> ({
-          text:item.itemName,
-          value:item.itemName
-        }))
-      ,
-      onFilter:(value,record) => record.approver.indexOf(value) === 0,
-    
+      filters: selectApprover.map((item) => ({
+        text: item.itemName,
+        value: item.itemName,
+      })),
+      onFilter: (value, record) => record.approver.indexOf(value) === 0,
     },
     {
       title: 'จำนวนเงิน',
@@ -186,7 +179,7 @@ const Kbsantdthemetwo = () => {
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
       defaultSortOrder: 'descend',
-      sorter:(a,b) => a.amount - b.amount,
+      sorter: (a, b) => a.amount - b.amount,
       render: (text, record) => {
         return record.amount.toLocaleString('en') + ' บาท'
       },
@@ -195,20 +188,27 @@ const Kbsantdthemetwo = () => {
       title: 'Action',
       dataIndex: 'action',
       responsive: ['md', 'sm', 'xs'],
+      width: '20%', 
       align: 'center',
       render: (text, record) => (
-        <Space size="middle" align="center" style={{ display: 'flex' }} wrap>
+        <Space size="middle" align="center" style={{ display: 'flex', textAlign: 'center' }} wrap>
           <ButtonUI
-            size={'sm'}
-            css={{ height: '$12' }}
+            size={'xs'}
             color="warning"
             rounded
             icon={<EditOutlined />}
             onClick={() => editOnclick(record)}
+            css={{ backgroundColor: '#ebde52' }}
           >
             แก้ไข
           </ButtonUI>
-          <ButtonUI size={'sm'} color="error" rounded icon={<DeleteOutlined />}>
+          <ButtonUI
+            size={'xs'}
+            color="error"
+            rounded
+            icon={<DeleteOutlined />}
+            css={{ backgroundColor: '#e676a8' }}
+          >
             ลบ
           </ButtonUI>
         </Space>
@@ -223,8 +223,9 @@ const Kbsantdthemetwo = () => {
 
   return (
     <div>
-      <CCard className="d-grid gap-2 d-md-flex justify-content-md-end">
-        <CRow className="mt-3 text-center">
+      <CCard >
+        <CContainer>
+        <CRow className='text-center mt-3'>
           <h4>รายการสัญญา</h4>
         </CRow>
         <CRow
@@ -233,29 +234,27 @@ const Kbsantdthemetwo = () => {
           lg={{ cols: 4, gutter: 2 }}
           className="px-4 pt-2"
         >
-          <CCol>
-            <AutoComplete 
-        options={autoOption}
-        filterOption={true}
-        style={{width:'266px'}}
-        placeholder="ชื่อ"
-        >
-            </AutoComplete>
+          <CCol className='p-2'>
+            <AutoComplete
+              options={autoOption}
+              filterOption={true}
+              style={{ width: '100%' }}
+              placeholder="ชื่อ"
+            ></AutoComplete>
           </CCol>
-          <CCol>
+          <CCol className='p-2'>
             <DatePicker className="customDatePickerWidth" />
           </CCol>
-          <CCol>
+          <CCol className='p-2'>
             <DatePicker className="customDatePickerWidth" />
           </CCol>
-          <CCol>
-          <AutoComplete 
-        options={autoApprover}
-        filterOption={true}
-        style={{width:'266px'}}
-        placeholder="ผู้อนุมัติ"
-        >
-            </AutoComplete>
+          <CCol className='p-2'>
+            <AutoComplete
+              options={autoApprover}
+              filterOption={true}
+              style={{ width: '100%' }}
+              placeholder="ผู้อนุมัติ"
+            ></AutoComplete>
           </CCol>
         </CRow>
         <CRow
@@ -264,7 +263,7 @@ const Kbsantdthemetwo = () => {
           lg={{ cols: 4, gutter: 2 }}
           className="px-4"
         >
-          <CCol>
+          <CCol className='p-2'>
             {/* <Dropdown overlay={menu} trigger={['click']}>
             <Button>
               <Space>
@@ -289,21 +288,34 @@ const Kbsantdthemetwo = () => {
               ))}
             </Select>
           </CCol>
-          <CCol>
+          <CCol className='p-2'>
             <Input placeholder="จำนวนเงิน" />
           </CCol>
-          <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <ButtonUI size={'sm'} color="default" rounded icon={<SearchOutlined />}>
+          <CCol style={{ display: 'flex', justifyContent: 'center', alignItems:'center' }}>
+            <ButtonUI
+              size={'sm'}
+              color="default"
+              rounded
+              icon={<SearchOutlined />}
+              css={{ backgroundColor: '#6c61aa' }}
+            >
               ค้นหา
             </ButtonUI>
           </CCol>
-          <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <ButtonUI size={'sm'} color="success" rounded icon={<PlusOutlined />}>
+          <CCol style={{ display: 'flex', justifyContent: 'center',alignItems:'center'  }}>
+            <ButtonUI
+              size={'sm'}
+              color="success"
+              rounded
+              icon={<PlusOutlined />}
+              css={{ backgroundColor: '#86cabb' }}
+            >
               สร้าง
             </ButtonUI>
           </CCol>
         </CRow>
-        <CRow className='p-4'>
+        <CRow className='p-4'
+        >
           <Table
             columns={tablecolumn}
             dataSource={data}
@@ -313,17 +325,19 @@ const Kbsantdthemetwo = () => {
               pageSizeOptions: ['10', '20', '30'],
             }}
             bordered={true}
-            //   scroll={{ x: 400 }}
+            scroll={{ x: 'max-content' }}
+
           />
         </CRow>
         {/* <CRow className="p-4"> */}
-          {/* <CCol className="p-4"> */}
-          {/* <Table dataSource={data} columns={tablecolumn} bordered  
+        {/* <CCol className="p-4"> */}
+        {/* <Table dataSource={data} columns={tablecolumn} bordered  
             rowClassName={"red"}
             /> */}
-          {/* <Tablemain columns={tablecolumn} dataSource={data} bordered={true} /> */}
-          {/* </CCol> */}
+        {/* <Tablemain columns={tablecolumn} dataSource={data} bordered={true} /> */}
+        {/* </CCol> */}
         {/* </CRow> */}
+        </CContainer>
       </CCard>
     </div>
   )

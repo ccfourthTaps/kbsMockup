@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Table, Space, Input, Select, DatePicker,AutoComplete } from 'antd'
-import { CCard, CRow, CCol, CButton, CLink } from '@coreui/react'
+import { CCard, CRow, CCol, CButton, CLink, CContainer } from '@coreui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import Tablemain from 'src/components/Table/Tablemain'
 import 'antd/dist/antd.css'
@@ -196,12 +196,12 @@ const Kbsantdthemethree = () => {
       title: 'Action',
       dataIndex: 'action',
       responsive: ['md', 'sm', 'xs'],
+      width:'20%',
       align: 'center',
       render: (text, record) => (
-        <Space size="middle" align="center" style={{ display: 'flex' }} wrap>
+        <Space size="middle" align="center" style={{ display: 'flex', textAlign: 'center' }} wrap>
           <ButtonUI
-            size={'sm'}
-            css={{ height: '$12' }}
+            size={'xs'}
             color="warning"
             rounded
             ghost
@@ -211,7 +211,7 @@ const Kbsantdthemethree = () => {
           >
             {/* แก้ไข */}
           </ButtonUI>
-          <ButtonUI size={'sm'} color="error" ghost shadow rounded icon={<DeleteOutlined />}>
+          <ButtonUI size={'xs'} color="error" ghost shadow rounded icon={<DeleteOutlined />}>
             {/* ลบ */}
           </ButtonUI>
         </Space>
@@ -226,8 +226,9 @@ const Kbsantdthemethree = () => {
 
   return (
     <div>
-      <CCard className="d-grid gap-2 d-md-flex justify-content-md-end">
-        <CRow className="mt-3 text-center">
+      <CCard >
+        <CContainer>
+        <CRow  className='text-center mt-3'>
           <h4>รายการสัญญา</h4>
         </CRow>
         <CRow
@@ -236,26 +237,26 @@ const Kbsantdthemethree = () => {
           lg={{ cols: 4, gutter: 2 }}
           className="px-4 pt-2"
         >
-          <CCol>
+          <CCol className='p-2'>
           <AutoComplete 
         options={autoOption}
         filterOption={true}
-        style={{width:'266px'}}
+        style={{width:'100%'}}
         placeholder="ชื่อ"
         >
             </AutoComplete>
           </CCol>
-          <CCol>
+          <CCol className='p-2'>
             <DatePicker className="customDatePickerWidth" />
           </CCol>
-          <CCol>
+          <CCol className='p-2'>
             <DatePicker className="customDatePickerWidth" />
           </CCol>
-          <CCol>
+          <CCol className='p-2'>
           <AutoComplete 
         options={autoApprover}
         filterOption={true}
-        style={{width:'266px'}}
+        style={{width:'100%'}}
         placeholder="ผู้อนุมัติ"
         >
             </AutoComplete>
@@ -267,7 +268,7 @@ const Kbsantdthemethree = () => {
           lg={{ cols: 4, gutter: 2 }}
           className="px-4"
         >
-          <CCol>
+          <CCol className='p-2'>
             {/* <Dropdown overlay={menu} trigger={['click']}>
             <Button>
               <Space>
@@ -292,15 +293,15 @@ const Kbsantdthemethree = () => {
               ))}
             </Select>
           </CCol>
-          <CCol>
+          <CCol className='p-2'>
             <Input placeholder="จำนวนเงิน" />
           </CCol>
-          <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <CCol style={{ display: 'flex', justifyContent: 'center', alignItems:'center' }}>
             <ButtonUI size={'sm'} color="default" shadow rounded icon={<SearchOutlined />}>
               {/* ค้นหา */}
             </ButtonUI>
           </CCol>
-          <CCol style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <CCol style={{ display: 'flex', justifyContent: 'center', alignItems:'center' }}>
             <ButtonUI size={'sm'} color="success" shadow rounded icon={<PlusOutlined />}>
               {/* สร้าง */}
             </ButtonUI>
@@ -316,7 +317,7 @@ const Kbsantdthemethree = () => {
               pageSizeOptions: ['10', '20', '30'],
             }}
             bordered={true}
-            //   scroll={{ x: 400 }}
+              scroll={{ x: 'max-content' }}
           />
         </CRow>
         {/* <CRow className="p-4"> */}
@@ -327,6 +328,7 @@ const Kbsantdthemethree = () => {
           {/* <Tablemain columns={tablecolumn} dataSource={data} bordered={true} /> */}
           {/* </CCol> */}
         {/* </CRow> */}
+        </CContainer>
       </CCard>
     </div>
   )

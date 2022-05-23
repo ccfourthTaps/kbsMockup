@@ -177,17 +177,17 @@ const Kbsantdtable = () => {
       dataIndex: 'action',
       responsive: ['md', 'sm', 'xs'],
       align: 'center',
+      width: '20%',
       render: (text, record) => (
-        <Space size="middle" align="center" style={{ display: 'flex' }} wrap>
+        <Space size="middle" align="center" style={{ textAlign: "center" }} wrap>
           <ButtonUI
-            size={'sm'}
-            css={{ height: '$12' }}
+            size={'xs'}
             color="warning"
             onClick={() => editOnclick(record)}
           >
             แก้ไข
           </ButtonUI>
-          <ButtonUI size={'sm'} color="error">
+          <ButtonUI size={'xs'} color="error">
             ลบ
           </ButtonUI>
         </Space>
@@ -205,7 +205,7 @@ const Kbsantdtable = () => {
       <CCard>
         <CContainer>
           <CRow>
-            <CCol xs="12">
+            <CCol xs="12" className='text-center mt-3'>
               <h4>รายการสัญญา</h4>
             </CCol>
           </CRow>
