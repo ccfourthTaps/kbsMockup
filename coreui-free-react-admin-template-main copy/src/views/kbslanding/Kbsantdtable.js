@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Table, Space, Select } from 'antd'
-import { CCard, CRow, CCol, CButton, CLink } from '@coreui/react'
+import { CCard, CRow, CCol, CButton, CLink, CContainer } from '@coreui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import Tablemain from 'src/components/Table/Tablemain'
 import 'antd/dist/antd.css'
@@ -183,12 +183,11 @@ const Kbsantdtable = () => {
             size={'sm'}
             css={{ height: '$12' }}
             color="warning"
-            
             onClick={() => editOnclick(record)}
           >
             แก้ไข
           </ButtonUI>
-          <ButtonUI size={'sm'} color="error" >
+          <ButtonUI size={'sm'} color="error">
             ลบ
           </ButtonUI>
         </Space>
@@ -203,18 +202,24 @@ const Kbsantdtable = () => {
 
   return (
     <div>
-      <CCard className="d-grid gap-2 d-md-flex justify-content-md-end">
-        <CRow className="mt-3 text-center">
-          <h4>รายการสัญญา</h4>
-        </CRow>
-        <CRow className="p-4">
-          {/* <CCol className="p-4"> */}
-          {/* <Table dataSource={data} columns={tablecolumn} bordered  
+      <CCard>
+        <CContainer>
+          <CRow>
+            <CCol xs="12">
+              <h4>รายการสัญญา</h4>
+            </CCol>
+          </CRow>
+          <CRow className="p-4">
+            <CCol xs="12">
+              {/* <CCol className="p-4"> */}
+              {/* <Table dataSource={data} columns={tablecolumn} bordered
             rowClassName={"red"}
             /> */}
-          <Tablemain columns={tablecolumn} dataSource={data} bordered={true} />
-          {/* </CCol> */}
-        </CRow>
+              <Tablemain columns={tablecolumn} dataSource={data} bordered={true} />
+              {/* </CCol> */}
+            </CCol>
+          </CRow>
+        </CContainer>
       </CCard>
     </div>
   )
